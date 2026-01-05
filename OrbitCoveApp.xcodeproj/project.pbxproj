@@ -57,6 +57,11 @@
 		F000000000000029 /* SettingsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000029 /* SettingsViews.swift */; };
 		F00000000000002A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000002A /* Assets.xcassets */; };
 		F00000000000002B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000002B /* Preview Assets.xcassets */; };
+		F000000000000040 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000040 /* ChatView.swift */; };
+		F000000000000041 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000041 /* ChatViewModel.swift */; };
+		F000000000000042 /* ConversationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000042 /* ConversationDetailView.swift */; };
+		F000000000000043 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000043 /* MessageBubble.swift */; };
+		F000000000000044 /* CreateConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000000000044 /* CreateConversationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +116,11 @@
 		F100000000000035 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		F100000000000037 /* ModuleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSelectionView.swift; sourceTree = "<group>"; };
 		F100000000000039 /* ManageModulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageModulesView.swift; sourceTree = "<group>"; };
+		F100000000000040 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F100000000000041 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F100000000000042 /* ConversationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationDetailView.swift; sourceTree = "<group>"; };
+		F100000000000043 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		F100000000000044 /* CreateConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateConversationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,10 +199,39 @@
 				F30000000000000A /* Onboarding */,
 				F30000000000000D /* Calendar */,
 				F300000000000010 /* Feed */,
+				F300000000000021 /* Chat */,
 				F300000000000013 /* Finances */,
 				F300000000000016 /* Profile */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		F300000000000021 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F300000000000022 /* Views */,
+				F300000000000023 /* ViewModels */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F300000000000022 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000040 /* ChatView.swift */,
+				F100000000000042 /* ConversationDetailView.swift */,
+				F100000000000043 /* MessageBubble.swift */,
+				F100000000000044 /* CreateConversationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F300000000000023 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F100000000000041 /* ChatViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F30000000000001E /* Dashboard */ = {
@@ -547,6 +586,11 @@
 				F000000000000028 /* CommunitySettingsView.swift in Sources */,
 				F000000000000029 /* SettingsViews.swift in Sources */,
 				F000000000000038 /* ManageModulesView.swift in Sources */,
+				F000000000000040 /* ChatView.swift in Sources */,
+				F000000000000041 /* ChatViewModel.swift in Sources */,
+				F000000000000042 /* ConversationDetailView.swift in Sources */,
+				F000000000000043 /* MessageBubble.swift in Sources */,
+				F000000000000044 /* CreateConversationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
