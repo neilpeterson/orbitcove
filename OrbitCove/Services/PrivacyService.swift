@@ -22,7 +22,10 @@ class PrivacyService {
     ]
     
     // Check if a community meets privacy standards
+    // Valid privacy settings require both private mode and invitation requirement
     func validatePrivacySettings(for community: Community) -> Bool {
+        // A community is considered privacy-compliant if it is private and requires invitations
+        // This ensures maximum control over who can access the community
         return community.isPrivate && community.requiresInvitation
     }
     

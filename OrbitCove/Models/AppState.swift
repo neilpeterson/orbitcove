@@ -46,7 +46,7 @@ class AppState: ObservableObject {
             )
         ]
         
-        // Sample user
+        // Sample user (placeholder data for demonstration)
         currentUser = User(
             id: UUID(),
             name: "User",
