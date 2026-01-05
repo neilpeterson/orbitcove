@@ -61,6 +61,8 @@ struct MainTabView: View {
             CalendarView()
         case .feed:
             FeedView()
+        case .chat:
+            ChatView()
         case .finances:
             FinancesView()
         }

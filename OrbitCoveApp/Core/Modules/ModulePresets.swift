@@ -6,14 +6,14 @@ enum ModulePresets {
     static func defaultModules(for communityType: CommunityType) -> [CommunityModule] {
         switch communityType {
         case .family:
-            return [.dashboard, .calendar, .feed, .finances]
+            return [.dashboard, .calendar, .feed, .chat, .finances]
         case .team:
             // Teams typically don't need shared finances
-            return [.dashboard, .calendar, .feed]
+            return [.dashboard, .calendar, .feed, .chat]
         case .club:
-            return [.dashboard, .calendar, .feed, .finances]
+            return [.dashboard, .calendar, .feed, .chat, .finances]
         case .other:
-            return [.dashboard, .calendar, .feed, .finances]
+            return [.dashboard, .calendar, .feed, .chat, .finances]
         }
     }
 

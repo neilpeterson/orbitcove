@@ -305,6 +305,146 @@ enum MockData {
         return transactionsWithSplits
     }
 
+    // MARK: - Conversations
+
+    static let conversations: [LocalConversation] = {
+        let now = Date()
+
+        return [
+            LocalConversation(
+                id: UUID(uuidString: "71111111-1111-1111-1111-111111111111")!,
+                title: "Tigers Team Chat",
+                isGroup: true,
+                participantIds: [currentUser.id, coachDan.id, mikeJohnson.id, lisaMiller.id],
+                participantNames: [currentUser.displayName, coachDan.displayName, mikeJohnson.displayName, lisaMiller.displayName],
+                lastMessageContent: "See you all at practice!",
+                lastMessageAt: now.addingTimeInterval(-600),
+                unreadCount: 2
+            ),
+            LocalConversation(
+                id: UUID(uuidString: "71111111-1111-1111-1111-111111111112")!,
+                title: nil,
+                isGroup: false,
+                participantIds: [currentUser.id, coachDan.id],
+                participantNames: [currentUser.displayName, coachDan.displayName],
+                lastMessageContent: "Thanks for the heads up!",
+                lastMessageAt: now.addingTimeInterval(-3600),
+                unreadCount: 0
+            ),
+            LocalConversation(
+                id: UUID(uuidString: "71111111-1111-1111-1111-111111111113")!,
+                title: nil,
+                isGroup: false,
+                participantIds: [currentUser.id, lisaMiller.id],
+                participantNames: [currentUser.displayName, lisaMiller.displayName],
+                lastMessageContent: "Can you bring extra snacks?",
+                lastMessageAt: now.addingTimeInterval(-86400),
+                unreadCount: 1
+            )
+        ]
+    }()
+
+    static let messages: [LocalMessage] = {
+        let now = Date()
+
+        return [
+            // Team Chat messages
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111111")!,
+                content: "Hey team! Practice moved to 4pm Saturday",
+                authorId: coachDan.id,
+                authorName: coachDan.displayName,
+                createdAt: now.addingTimeInterval(-7200)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111112")!,
+                content: "Got it, thanks coach!",
+                authorId: mikeJohnson.id,
+                authorName: mikeJohnson.displayName,
+                createdAt: now.addingTimeInterval(-6900)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111113")!,
+                content: "We'll be there 👍",
+                authorId: currentUser.id,
+                authorName: currentUser.displayName,
+                createdAt: now.addingTimeInterval(-6600)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111114")!,
+                content: "I'll bring oranges for halftime",
+                authorId: lisaMiller.id,
+                authorName: lisaMiller.displayName,
+                createdAt: now.addingTimeInterval(-3600)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111115")!,
+                content: "See you all at practice!",
+                mediaUrls: ["https://example.com/team-photo.jpg"],
+                authorId: coachDan.id,
+                authorName: coachDan.displayName,
+                createdAt: now.addingTimeInterval(-600)
+            ),
+            // DM with Coach Dan
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111121")!,
+                content: "Hey Coach, Tommy won't make it to Thursday's practice - doctor's appointment",
+                authorId: currentUser.id,
+                authorName: currentUser.displayName,
+                createdAt: now.addingTimeInterval(-7200)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111122")!,
+                content: "No problem! Hope everything is okay. We'll catch him up next week.",
+                authorId: coachDan.id,
+                authorName: coachDan.displayName,
+                createdAt: now.addingTimeInterval(-6000)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111123")!,
+                content: "Thanks for the heads up!",
+                authorId: coachDan.id,
+                authorName: coachDan.displayName,
+                createdAt: now.addingTimeInterval(-3600)
+            ),
+            // DM with Lisa
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111131")!,
+                content: "Hey! Are you going to the game on Saturday?",
+                authorId: lisaMiller.id,
+                authorName: lisaMiller.displayName,
+                createdAt: now.addingTimeInterval(-172800)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111132")!,
+                content: "Yes! The whole family is coming",
+                authorId: currentUser.id,
+                authorName: currentUser.displayName,
+                createdAt: now.addingTimeInterval(-172000)
+            ),
+            LocalMessage(
+                id: UUID(uuidString: "81111111-1111-1111-1111-111111111133")!,
+                content: "Can you bring extra snacks?",
+                authorId: lisaMiller.id,
+                authorName: lisaMiller.displayName,
+                createdAt: now.addingTimeInterval(-86400)
+            )
+        ]
+    }()
+
+    static func messagesForConversation(_ conversationId: UUID) -> [LocalMessage] {
+        switch conversationId {
+        case UUID(uuidString: "71111111-1111-1111-1111-111111111111"):
+            return Array(messages.prefix(5)) // Team chat
+        case UUID(uuidString: "71111111-1111-1111-1111-111111111112"):
+            return Array(messages[5..<8]) // DM with Coach Dan
+        case UUID(uuidString: "71111111-1111-1111-1111-111111111113"):
+            return Array(messages[8..<11]) // DM with Lisa
+        default:
+            return []
+        }
+    }
+
     // MARK: - Members
 
     static let members: [(user: LocalUser, role: MemberRole)] = [

@@ -48,6 +48,15 @@ protocol SyncServiceProtocol {
     var isSyncing: Bool { get }
 }
 
+protocol ChatServiceProtocol {
+    func fetchConversations(for community: LocalCommunity) async throws -> [LocalConversation]
+    func fetchMessages(for conversation: LocalConversation) async throws -> [LocalMessage]
+    func createConversation(title: String?, participantIds: [UUID], participantNames: [String], isGroup: Bool) async throws -> LocalConversation
+    func sendMessage(content: String, mediaUrls: [String], to conversation: LocalConversation) async throws -> LocalMessage
+    func deleteMessage(_ message: LocalMessage) async throws
+    func markAsRead(_ conversation: LocalConversation) async throws
+}
+
 // MARK: - Service Container
 
 @Observable
@@ -60,6 +69,7 @@ final class ServiceContainer {
     let postService: PostServiceProtocol
     let financeService: FinanceServiceProtocol
     let syncService: SyncServiceProtocol
+    let chatService: ChatServiceProtocol
 
     private init() {
         // Use mock services for now
@@ -69,6 +79,7 @@ final class ServiceContainer {
         self.postService = MockPostService()
         self.financeService = MockFinanceService()
         self.syncService = MockSyncService()
+        self.chatService = MockChatService()
     }
 }
 

@@ -659,6 +659,108 @@ final class LocalSplit {
 }
 
 @Model
+final class LocalConversation {
+    @Attribute(.unique) var id: UUID
+    var title: String?
+    var isGroup: Bool
+    var participantIds: [UUID]
+    var participantNames: [String]
+    var lastMessageContent: String?
+    var lastMessageAt: Date?
+    var unreadCount: Int
+    var createdAt: Date
+    var syncStatus: SyncStatus
+
+    @Relationship(deleteRule: .cascade, inverse: \LocalMessage.conversation)
+    var messages: [LocalMessage]
+
+    var community: LocalCommunity?
+
+    init(
+        id: UUID = UUID(),
+        title: String? = nil,
+        isGroup: Bool = false,
+        participantIds: [UUID] = [],
+        participantNames: [String] = [],
+        lastMessageContent: String? = nil,
+        lastMessageAt: Date? = nil,
+        unreadCount: Int = 0,
+        createdAt: Date = Date(),
+        syncStatus: SyncStatus = .synced
+    ) {
+        self.id = id
+        self.title = title
+        self.isGroup = isGroup
+        self.participantIds = participantIds
+        self.participantNames = participantNames
+        self.lastMessageContent = lastMessageContent
+        self.lastMessageAt = lastMessageAt
+        self.unreadCount = unreadCount
+        self.createdAt = createdAt
+        self.syncStatus = syncStatus
+        self.messages = []
+    }
+
+    /// Display name for the conversation (title for groups, participant name for DMs)
+    func displayName(currentUserId: UUID) -> String {
+        if let title = title, !title.isEmpty {
+            return title
+        }
+        // For DMs, show the other participant's name
+        if let index = participantIds.firstIndex(where: { $0 != currentUserId }),
+           index < participantNames.count {
+            return participantNames[index]
+        }
+        return participantNames.joined(separator: ", ")
+    }
+}
+
+@Model
+final class LocalMessage {
+    @Attribute(.unique) var id: UUID
+    var content: String
+    var mediaUrls: [String]
+    var authorId: UUID
+    var authorName: String
+    var authorAvatarUrl: String?
+    var createdAt: Date
+    var editedAt: Date?
+    var syncStatus: SyncStatus
+
+    var conversation: LocalConversation?
+
+    init(
+        id: UUID = UUID(),
+        content: String,
+        mediaUrls: [String] = [],
+        authorId: UUID,
+        authorName: String,
+        authorAvatarUrl: String? = nil,
+        createdAt: Date = Date(),
+        editedAt: Date? = nil,
+        syncStatus: SyncStatus = .synced
+    ) {
+        self.id = id
+        self.content = content
+        self.mediaUrls = mediaUrls
+        self.authorId = authorId
+        self.authorName = authorName
+        self.authorAvatarUrl = authorAvatarUrl
+        self.createdAt = createdAt
+        self.editedAt = editedAt
+        self.syncStatus = syncStatus
+    }
+
+    var isEdited: Bool {
+        editedAt != nil
+    }
+
+    var hasMedia: Bool {
+        !mediaUrls.isEmpty
+    }
+}
+
+@Model
 final class PendingOperation {
     @Attribute(.unique) var id: UUID
     var operationType: OperationType

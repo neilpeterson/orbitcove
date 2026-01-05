@@ -5,6 +5,7 @@ enum CommunityModule: String, Codable, CaseIterable, Identifiable {
     case dashboard = "dashboard"
     case calendar = "calendar"
     case feed = "feed"
+    case chat = "chat"
     case finances = "finances"
 
     var id: String { rawValue }
@@ -14,6 +15,7 @@ enum CommunityModule: String, Codable, CaseIterable, Identifiable {
         case .dashboard: return "Dashboard"
         case .calendar: return "Calendar"
         case .feed: return "Feed"
+        case .chat: return "Chat"
         case .finances: return "Finances"
         }
     }
@@ -23,6 +25,7 @@ enum CommunityModule: String, Codable, CaseIterable, Identifiable {
         case .dashboard: return "square.grid.2x2"
         case .calendar: return "calendar"
         case .feed: return "newspaper"
+        case .chat: return "bubble.left.and.bubble.right"
         case .finances: return "dollarsign.circle"
         }
     }
@@ -35,6 +38,8 @@ enum CommunityModule: String, Codable, CaseIterable, Identifiable {
             return "Schedule and manage events with RSVP tracking"
         case .feed:
             return "Share updates, photos, polls, and announcements"
+        case .chat:
+            return "Direct messages and group conversations"
         case .finances:
             return "Track shared expenses and split bills"
         }
@@ -46,7 +51,8 @@ enum CommunityModule: String, Codable, CaseIterable, Identifiable {
         case .dashboard: return 0
         case .calendar: return 1
         case .feed: return 2
-        case .finances: return 3
+        case .chat: return 3
+        case .finances: return 4
         }
     }
 }

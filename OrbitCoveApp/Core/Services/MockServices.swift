@@ -160,6 +160,48 @@ final class MockSyncService: SyncServiceProtocol {
     }
 }
 
+// MARK: - Mock Chat Service
+
+final class MockChatService: ChatServiceProtocol {
+    func fetchConversations(for community: LocalCommunity) async throws -> [LocalConversation] {
+        try await Task.sleep(for: .milliseconds(300))
+        return MockData.conversations.sorted { ($0.lastMessageAt ?? .distantPast) > ($1.lastMessageAt ?? .distantPast) }
+    }
+
+    func fetchMessages(for conversation: LocalConversation) async throws -> [LocalMessage] {
+        try await Task.sleep(for: .milliseconds(300))
+        return MockData.messagesForConversation(conversation.id).sorted { $0.createdAt < $1.createdAt }
+    }
+
+    func createConversation(title: String?, participantIds: [UUID], participantNames: [String], isGroup: Bool) async throws -> LocalConversation {
+        try await Task.sleep(for: .milliseconds(500))
+        return LocalConversation(
+            title: title,
+            isGroup: isGroup,
+            participantIds: participantIds,
+            participantNames: participantNames
+        )
+    }
+
+    func sendMessage(content: String, mediaUrls: [String], to conversation: LocalConversation) async throws -> LocalMessage {
+        try await Task.sleep(for: .milliseconds(300))
+        return LocalMessage(
+            content: content,
+            mediaUrls: mediaUrls,
+            authorId: MockData.currentUser.id,
+            authorName: MockData.currentUser.displayName
+        )
+    }
+
+    func deleteMessage(_ message: LocalMessage) async throws {
+        try await Task.sleep(for: .milliseconds(200))
+    }
+
+    func markAsRead(_ conversation: LocalConversation) async throws {
+        try await Task.sleep(for: .milliseconds(100))
+    }
+}
+
 // MARK: - Service Errors
 
 enum ServiceError: LocalizedError {
