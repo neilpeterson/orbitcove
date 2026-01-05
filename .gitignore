@@ -1,0 +1,39 @@
+# Claude Code local settings
+.claude/settings.local.json
+.claude.local.md
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad
+xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# Vapor
+Public/
+Storage/
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+secrets/
+
+# IDE
+.idea/
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+
+# Testing
+coverage/
+*.profdata
