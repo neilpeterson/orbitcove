@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 OrbitCove is a privacy-first, all-in-one community platform for iOS. It enables groups (families, sports teams, clubs) to create private digital spaces with integrated organizational tools.
 
-**Current Status**: Planning/specification phase. No code has been written yet.
+**Current Status**: Phase 1 complete. iOS app with full UI mockups using mock data. Backend not yet started.
 
 ## Technology Stack
 
@@ -19,12 +19,12 @@ OrbitCove is a privacy-first, all-in-one community platform for iOS. It enables 
 | Auth | Azure AD B2C with Sign in with Apple |
 | Push | Azure Notification Hubs → APNs |
 
-## Build Commands (Once Code Exists)
+## Build Commands
 
 ### iOS App
 ```bash
-xcodebuild -scheme OrbitCove -destination 'platform=iOS Simulator,name=iPhone 15'
-xcodebuild test -scheme OrbitCove -destination 'platform=iOS Simulator,name=iPhone 15'
+xcodebuild -scheme OrbitCoveApp -destination 'platform=iOS Simulator,name=iPhone 15'
+xcodebuild test -scheme OrbitCoveApp -destination 'platform=iOS Simulator,name=iPhone 15'
 ```
 
 ### Vapor Backend
@@ -49,22 +49,30 @@ swiftlint --fix
 - **Multi-tenancy**: Shared database with Row-Level Security per community
 - **Architecture Pattern**: MVVM with Services for iOS; Controller-Service-Repository for Vapor
 
-## Project Structure (Planned)
+## Project Structure
 
 ```
 OrbitCove/
 ├── OrbitCoveApp/              # iOS SwiftUI app
-│   ├── App/                   # App entry, delegates
-│   ├── Core/                  # Services, networking, storage
-│   ├── Features/              # Feature modules (Calendar, Feed, Finances)
-│   └── Shared/                # Reusable components, extensions
-├── OrbitCoveAPI/              # Vapor backend
-│   ├── Sources/App/
-│   │   ├── Controllers/       # HTTP request handlers
-│   │   ├── Models/            # Fluent models
-│   │   ├── Migrations/        # Database migrations
-│   │   └── Services/          # Business logic
-│   └── Tests/
+│   ├── App/                   # App entry, delegates, main tab view
+│   ├── Core/
+│   │   ├── Modules/           # Community module system
+│   │   └── Services/          # Service container, mock services
+│   ├── Features/              # Feature modules
+│   │   ├── Calendar/          # Calendar, events, RSVP
+│   │   ├── Dashboard/         # Home dashboard
+│   │   ├── Feed/              # Social feed, posts, comments
+│   │   ├── Finances/          # Expenses, dues, settle up
+│   │   ├── Onboarding/        # Welcome, create/join community
+│   │   └── Profile/           # User profile, settings
+│   ├── Shared/
+│   │   ├── Components/        # Reusable UI components
+│   │   ├── Extensions/        # Date, View extensions
+│   │   ├── Models/            # Local data models
+│   │   └── Theme/             # Design system (colors, fonts, spacing)
+│   └── Resources/             # Assets, icons
+├── OrbitCoveApp.xcodeproj/    # Xcode project
+├── OrbitCoveAPI/              # Vapor backend (not yet created)
 └── docs/                      # Planning documents
 ```
 

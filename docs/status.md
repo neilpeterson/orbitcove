@@ -6,7 +6,7 @@
 
 ## Current Phase
 
-**Phase 0: iOS Setup** - Not Started
+**Phase 2: Backend Setup** - Not Started
 
 ---
 
@@ -15,8 +15,8 @@
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Planning & Specification | ✅ Complete | 100% |
-| Phase 0: iOS Setup | ⬜ Not Started | 0% |
-| Phase 1: UI Mockups | ⬜ Not Started | 0% |
+| Phase 0: iOS Setup | ✅ Complete | 100% |
+| Phase 1: UI Mockups | ✅ Complete | 100% |
 | Phase 2: Backend Setup | ⬜ Not Started | 0% |
 | Phase 3: API Integration | ⬜ Not Started | 0% |
 | Phase 4: Polish & Offline | ⬜ Not Started | 0% |
@@ -58,23 +58,23 @@
 ## Phase 0: iOS Setup
 
 ### Project Setup
-- [ ] Create Xcode project (SwiftUI, iOS 17)
-- [ ] Set up project structure (Features/, Core/, Shared/)
-- [ ] Configure SwiftData models
-- [ ] Add SwiftLint
-- [ ] Set up unit test target
-- [ ] Create mock data framework
+- [x] Create Xcode project (SwiftUI, iOS 17)
+- [x] Set up project structure (Features/, Core/, Shared/)
+- [x] Configure SwiftData models
+- [x] Add SwiftLint
+- [x] Set up unit test target
+- [x] Create mock data framework
 
 ### Architecture Setup
-- [ ] Define protocol-based services (for mock/real swap)
-- [ ] Set up dependency injection via Environment
-- [ ] Create theme/design system (colors, fonts, spacing)
-- [ ] Set up asset catalog (icons, images)
+- [x] Define protocol-based services (for mock/real swap)
+- [x] Set up dependency injection via Environment
+- [x] Create theme/design system (colors, fonts, spacing)
+- [x] Set up asset catalog (icons, images)
 
 ### Exit Criteria
-- [ ] `xcodebuild` succeeds
-- [ ] SwiftUI previews work with mock data
-- [ ] Basic navigation shell renders
+- [x] `xcodebuild` succeeds
+- [x] SwiftUI previews work with mock data
+- [x] Basic navigation shell renders
 
 ---
 
@@ -83,68 +83,68 @@
 Build all screens with mock data. No backend required.
 
 ### Onboarding & Auth
-- [ ] Welcome screen
-- [ ] Sign in with Apple (UI only, mock auth)
-- [ ] Create community flow
-- [ ] Join community flow
+- [x] Welcome screen
+- [x] Sign in with Apple (UI only, mock auth)
+- [x] Create community flow
+- [x] Join community flow
 
 ### Navigation Shell
-- [ ] Tab bar (Calendar, Feed, Finances, Profile)
-- [ ] Community header
-- [ ] Community switcher sheet
+- [x] Tab bar (Calendar, Feed, Finances, Profile)
+- [x] Community header
+- [x] Community switcher sheet
 
 ### Calendar Screens
-- [ ] Month view
-- [ ] List view
-- [ ] Event detail
-- [ ] Create/edit event sheet
-- [ ] RSVP UI
-- [ ] Family member RSVP sheet
-- [ ] Empty state
+- [x] Month view
+- [x] List view
+- [x] Event detail
+- [x] Create/edit event sheet
+- [x] RSVP UI
+- [x] Family member RSVP sheet
+- [x] Empty state
 
 ### Feed Screens
-- [ ] Feed list (with pinned posts)
-- [ ] Post detail with comments
-- [ ] Create post sheet
-- [ ] Photo picker integration
-- [ ] Poll creation/voting UI
-- [ ] Reaction picker
-- [ ] Empty state
+- [x] Feed list (with pinned posts)
+- [x] Post detail with comments
+- [x] Create post sheet
+- [x] Photo picker integration
+- [x] Poll creation/voting UI
+- [x] Reaction picker
+- [x] Empty state
 
 ### Finances Screens
-- [ ] Balance overview
-- [ ] Transaction list
-- [ ] Add expense sheet
-- [ ] Member split selector
-- [ ] Settle up screen
-- [ ] Dues setup (admin)
-- [ ] Dues tracking
-- [ ] Empty state
+- [x] Balance overview
+- [x] Transaction list
+- [x] Add expense sheet
+- [x] Member split selector
+- [x] Settle up screen
+- [x] Dues setup (admin)
+- [x] Dues tracking
+- [x] Empty state
 
 ### Profile & Settings
-- [ ] Profile overview
-- [ ] Edit profile
-- [ ] Family members list
-- [ ] Add/edit family member
-- [ ] Community settings
-- [ ] Members list
-- [ ] Invite members
-- [ ] Notification settings
-- [ ] App settings
+- [x] Profile overview
+- [x] Edit profile
+- [x] Family members list
+- [x] Add/edit family member
+- [x] Community settings
+- [x] Members list
+- [x] Invite members
+- [x] Notification settings
+- [x] App settings
 
 ### Shared Components
-- [ ] Loading states
-- [ ] Error states
-- [ ] Empty states with illustrations
-- [ ] Pull to refresh
-- [ ] Offline indicator banner
+- [x] Loading states
+- [x] Error states
+- [x] Empty states with illustrations
+- [x] Pull to refresh
+- [x] Offline indicator banner
 
 ### Exit Criteria
-- [ ] All screens from UX Flows doc implemented
-- [ ] SwiftUI previews work for every screen
-- [ ] Navigation between all screens works
-- [ ] Mock data displays correctly
-- [ ] UI matches design intent
+- [x] All screens from UX Flows doc implemented
+- [x] SwiftUI previews work for every screen
+- [x] Navigation between all screens works
+- [x] Mock data displays correctly
+- [x] UI matches design intent
 
 ---
 
@@ -335,13 +335,62 @@ Connect iOS UI to real backend.
 |------|------|
 | Jan 2026 | Project planning completed. Ready to begin Phase 0. |
 | Jan 2026 | Switched to UI-first approach. Build all iOS screens with mock data before backend. |
+| Jan 2026 | Phase 0 and Phase 1 completed. iOS app structure with all UI screens implemented with mock data. |
+| Jan 2026 | Project scrub: Updated CLAUDE.md to reflect current state, fixed scheme name, documented Dashboard feature. |
 
 ---
 
 ## Next Actions
 
-1. **Create Xcode project** - SwiftUI app, iOS 17 target
-2. **Set up project structure** - Features/, Core/, Shared/ directories
-3. **Create SwiftData models** - Based on data model doc
-4. **Build mock data framework** - Protocol-based services for mock/real swap
-5. **Start UI mockups** - Begin with navigation shell and onboarding
+1. **Create Vapor backend project** - Swift Vapor with Fluent ORM
+2. **Set up Azure infrastructure** - PostgreSQL, App Service, Blob Storage
+3. **Implement authentication** - Azure AD B2C with Sign in with Apple
+4. **Build core API endpoints** - User, Community, Members, Invites
+5. **Connect iOS app to real API** - Replace mock services with real API calls
+
+---
+
+## Files Created in Phase 0 & 1
+
+### App Structure
+```
+OrbitCoveApp/
+├── App/
+│   ├── OrbitCoveApp.swift         # Main app entry
+│   ├── AppState.swift              # Global app state
+│   ├── RootView.swift              # Root navigation
+│   └── MainTabView.swift           # Tab bar navigation
+├── Core/
+│   ├── Modules/
+│   │   ├── CommunityModule.swift   # Module system for communities
+│   │   └── ModulePresets.swift     # Preset module configurations
+│   └── Services/
+│       ├── ServiceContainer.swift  # DI container
+│       ├── MockServices.swift      # Mock implementations
+│       └── MockData.swift          # Sample data
+├── Features/
+│   ├── Onboarding/
+│   │   ├── Views/                  # Welcome, Choice, Create, Join flows
+│   │   └── ViewModels/             # OnboardingViewModel
+│   ├── Dashboard/
+│   │   ├── Views/                  # Dashboard, components
+│   │   └── ViewModels/             # DashboardViewModel
+│   ├── Calendar/
+│   │   ├── Views/                  # Calendar, Event detail, Create event
+│   │   └── ViewModels/             # CalendarViewModel
+│   ├── Feed/
+│   │   ├── Views/                  # Feed, Post detail, Create post
+│   │   └── ViewModels/             # FeedViewModel
+│   ├── Finances/
+│   │   ├── Views/                  # Finances, Expenses, Settle up
+│   │   └── ViewModels/             # FinancesViewModel
+│   └── Profile/
+│       └── Views/                  # Profile, Settings, Community settings
+├── Shared/
+│   ├── Components/                 # Reusable UI components
+│   ├── Extensions/                 # Date, View extensions
+│   ├── Models/                     # SwiftData models
+│   └── Theme/                      # Design system
+└── Resources/
+    └── Assets.xcassets/            # App icons, colors
+```
