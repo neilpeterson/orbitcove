@@ -28,13 +28,15 @@ struct Community: Identifiable, Codable {
     var isPrivate: Bool = true
     var requiresInvitation: Bool = true
     
-    init(id: UUID = UUID(), name: String, description: String, type: CommunityType, memberCount: Int, createdDate: Date) {
+    init(id: UUID = UUID(), name: String, description: String, type: CommunityType, memberCount: Int, createdDate: Date, isPrivate: Bool = true, requiresInvitation: Bool = true) {
         self.id = id
         self.name = name
         self.description = description
         self.type = type
         self.memberCount = memberCount
         self.createdDate = createdDate
+        self.isPrivate = isPrivate
+        self.requiresInvitation = requiresInvitation
         
         // Initialize with default organizational tools
         self.tools = [

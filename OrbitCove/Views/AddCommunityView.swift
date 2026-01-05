@@ -76,7 +76,9 @@ struct AddCommunityView: View {
             description: description,
             type: selectedType,
             memberCount: 1,
-            createdDate: Date()
+            createdDate: Date(),
+            isPrivate: isPrivate,
+            requiresInvitation: requiresInvitation
         )
         
         appState.addCommunity(newCommunity)
