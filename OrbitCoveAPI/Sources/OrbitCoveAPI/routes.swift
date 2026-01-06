@@ -68,4 +68,8 @@ func routes(_ app: Application) throws {
             return .serviceUnavailable
         }
     }
+
+    // Register API controllers
+    try app.register(collection: UserController())
+    try app.register(collection: CommunityController())
 }

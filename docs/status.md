@@ -181,10 +181,10 @@ Build all screens with mock data. No backend required.
 - [ ] Refresh token flow
 
 ### Core API Endpoints
-- [ ] User CRUD
-- [ ] Community CRUD
-- [ ] Members management
-- [ ] Invites
+- [x] User CRUD
+- [x] Community CRUD
+- [x] Members management
+- [x] Invites
 
 ### Exit Criteria
 - [ ] Backend deploys to Azure staging
@@ -343,6 +343,7 @@ Connect iOS UI to real backend.
 | Jan 2026 | Phase 2 started: Created Vapor backend project with Fluent + PostgreSQL. Docker Compose configured for local development. |
 | Jan 2026 | Created 17 Fluent models and database migrations. Added development guide (README.md) for OrbitCoveAPI. |
 | Jan 2026 | Project scrub: Removed empty directories, updated documentation to reflect Phase 2 progress. |
+| Jan 2026 | Added core API endpoints: Users, Communities, Members, Invites with full CRUD operations. |
 
 ---
 
@@ -351,9 +352,11 @@ Connect iOS UI to real backend.
 1. ~~**Create Vapor backend project**~~ ✅ - Swift Vapor with Fluent ORM
 2. ~~**Create Fluent models and migrations**~~ ✅ - 17 models created from data schema
 3. ~~**Add health endpoint**~~ ✅ - `/health`, `/health/live`, `/health/ready`
-4. **Build core API endpoints** - User, Community, Members, Invites
-5. **Set up Azure infrastructure** - PostgreSQL, App Service, Blob Storage
-6. **Implement authentication** - Azure AD B2C with Sign in with Apple
+4. ~~**Build core API endpoints**~~ ✅ - User, Community, Members, Invites
+5. **Build Calendar API endpoints** - Events, RSVPs
+6. **Build Feed API endpoints** - Posts, Comments, Reactions
+7. **Set up Azure infrastructure** - PostgreSQL, App Service, Blob Storage
+8. **Implement authentication** - Azure AD B2C with Sign in with Apple
 
 ---
 
