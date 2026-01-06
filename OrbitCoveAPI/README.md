@@ -238,21 +238,64 @@ curl http://localhost:8080/health/ready
 }
 ```
 
-### Create a User (example - requires endpoint implementation)
+### User Endpoints
+
 ```bash
-curl -X POST http://localhost:8080/api/users \
+# Create user (from Apple Sign In)
+curl -X POST http://localhost:8080/api/v1/users \
   -H "Content-Type: application/json" \
   -d '{
     "appleId": "001234.abc123",
     "email": "test@example.com",
     "displayName": "Test User"
   }'
+
+# Get current user
+curl http://localhost:8080/api/v1/me \
+  -H "X-User-ID: <user-uuid>"
+
+# Update current user
+curl -X PATCH http://localhost:8080/api/v1/me \
+  -H "X-User-ID: <user-uuid>" \
+  -H "Content-Type: application/json" \
+  -d '{"displayName": "New Name"}'
+
+# Get user's communities
+curl http://localhost:8080/api/v1/me/communities \
+  -H "X-User-ID: <user-uuid>"
 ```
 
-### Get Users (example - requires endpoint implementation)
+### Community Endpoints
+
 ```bash
-curl http://localhost:8080/api/users
+# Create community
+curl -X POST http://localhost:8080/api/v1/communities \
+  -H "X-User-ID: <user-uuid>" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "My Team", "description": "Our awesome team"}'
+
+# Get community
+curl http://localhost:8080/api/v1/communities/<community-uuid> \
+  -H "X-User-ID: <user-uuid>"
+
+# Join community via invite code
+curl -X POST http://localhost:8080/api/v1/communities/<community-uuid>/join \
+  -H "X-User-ID: <user-uuid>" \
+  -H "Content-Type: application/json" \
+  -d '{"code": "ABC123"}'
+
+# Get community members
+curl http://localhost:8080/api/v1/communities/<community-uuid>/members \
+  -H "X-User-ID: <user-uuid>"
+
+# Create invite (admin only)
+curl -X POST http://localhost:8080/api/v1/communities/<community-uuid>/invites \
+  -H "X-User-ID: <user-uuid>" \
+  -H "Content-Type: application/json" \
+  -d '{"usesRemaining": 10, "expiresInHours": 48}'
 ```
+
+**Note:** The `X-User-ID` header is a temporary auth mechanism. It will be replaced with JWT authentication.
 
 ---
 
@@ -272,8 +315,12 @@ OrbitCoveAPI/
 │   │   └── ...
 │   ├── Migrations/           # Database migrations
 │   │   └── CreateInitialSchema.swift
-│   ├── Controllers/          # Route handlers (TODO)
-│   └── DTOs/                 # Data transfer objects (TODO)
+│   ├── Controllers/          # Route handlers
+│   │   ├── UserController.swift
+│   │   └── CommunityController.swift
+│   └── DTOs/                 # Data transfer objects
+│       ├── UserDTO.swift
+│       └── CommunityDTO.swift
 ├── Tests/OrbitCoveAPITests/  # Unit tests
 ├── Package.swift             # Dependencies
 ├── docker-compose.yml        # Docker services
