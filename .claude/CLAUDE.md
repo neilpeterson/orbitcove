@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 OrbitCove is a privacy-first, all-in-one community platform for iOS. It enables groups (families, sports teams, clubs) to create private digital spaces with integrated organizational tools.
 
-**Current Status**: Phase 1 complete. iOS app with full UI mockups using mock data. Backend not yet started.
+**Current Status**: Phase 2 in progress. iOS app with full UI mockups (Phase 1 complete). Vapor backend created with Fluent models and migrations.
 
 ## Technology Stack
 
@@ -72,7 +72,7 @@ OrbitCove/
 │   │   └── Theme/             # Design system (colors, fonts, spacing)
 │   └── Resources/             # Assets, icons
 ├── OrbitCoveApp.xcodeproj/    # Xcode project
-├── OrbitCoveAPI/              # Vapor backend (not yet created)
+├── OrbitCoveAPI/              # Vapor backend (Fluent + PostgreSQL)
 └── docs/                      # Planning documents
 ```
 

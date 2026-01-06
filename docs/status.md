@@ -6,7 +6,7 @@
 
 ## Current Phase
 
-**Phase 2: Backend Setup** - Not Started
+**Phase 2: Backend Setup** - In Progress
 
 ---
 
@@ -17,7 +17,7 @@
 | Planning & Specification | ✅ Complete | 100% |
 | Phase 0: iOS Setup | ✅ Complete | 100% |
 | Phase 1: UI Mockups | ✅ Complete | 100% |
-| Phase 2: Backend Setup | ⬜ Not Started | 0% |
+| Phase 2: Backend Setup | 🟡 In Progress | 40% |
 | Phase 3: API Integration | ⬜ Not Started | 0% |
 | Phase 4: Polish & Offline | ⬜ Not Started | 0% |
 | Phase 5: Launch Prep | ⬜ Not Started | 0% |
@@ -151,11 +151,14 @@ Build all screens with mock data. No backend required.
 ## Phase 2: Backend Setup
 
 ### Vapor Project
-- [ ] Create Vapor project
-- [ ] Set up project structure
-- [ ] Configure Fluent + PostgreSQL
-- [ ] Create Dockerfile
-- [ ] Add health endpoint
+- [x] Create Vapor project
+- [x] Set up project structure
+- [x] Configure Fluent + PostgreSQL
+- [x] Create Dockerfile
+- [x] Docker Compose with PostgreSQL service
+- [x] Create Fluent models from data schema (17 models)
+- [x] Create database migrations
+- [x] Add health endpoint
 
 ### Azure Infrastructure
 - [ ] Create resource group (staging)
@@ -337,16 +340,20 @@ Connect iOS UI to real backend.
 | Jan 2026 | Switched to UI-first approach. Build all iOS screens with mock data before backend. |
 | Jan 2026 | Phase 0 and Phase 1 completed. iOS app structure with all UI screens implemented with mock data. |
 | Jan 2026 | Project scrub: Updated CLAUDE.md to reflect current state, fixed scheme name, documented Dashboard feature. |
+| Jan 2026 | Phase 2 started: Created Vapor backend project with Fluent + PostgreSQL. Docker Compose configured for local development. |
+| Jan 2026 | Created 17 Fluent models and database migrations. Added development guide (README.md) for OrbitCoveAPI. |
+| Jan 2026 | Project scrub: Removed empty directories, updated documentation to reflect Phase 2 progress. |
 
 ---
 
 ## Next Actions
 
-1. **Create Vapor backend project** - Swift Vapor with Fluent ORM
-2. **Set up Azure infrastructure** - PostgreSQL, App Service, Blob Storage
-3. **Implement authentication** - Azure AD B2C with Sign in with Apple
+1. ~~**Create Vapor backend project**~~ ✅ - Swift Vapor with Fluent ORM
+2. ~~**Create Fluent models and migrations**~~ ✅ - 17 models created from data schema
+3. ~~**Add health endpoint**~~ ✅ - `/health`, `/health/live`, `/health/ready`
 4. **Build core API endpoints** - User, Community, Members, Invites
-5. **Connect iOS app to real API** - Replace mock services with real API calls
+5. **Set up Azure infrastructure** - PostgreSQL, App Service, Blob Storage
+6. **Implement authentication** - Azure AD B2C with Sign in with Apple
 
 ---
 
